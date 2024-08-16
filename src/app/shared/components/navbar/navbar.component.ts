@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { initFlowbite } from 'flowbite';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
-})
-export class AppComponent implements OnInit {
-  title = 'web_sena';
+import { AppComponent } from '../../../app.component';
 
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [RouterLink, RouterModule, AppComponent],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
+})
+export class NavbarComponent implements OnInit{
+
+  
   ngOnInit(): void {
     initFlowbite();
 
@@ -64,6 +63,5 @@ export class AppComponent implements OnInit {
 
 
   }
+
 }
-
-
