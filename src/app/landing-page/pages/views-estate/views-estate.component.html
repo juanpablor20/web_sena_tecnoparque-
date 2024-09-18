@@ -8,6 +8,7 @@
           <div class="w-full md:w-1/2 mb-12 md:mb-0">
               <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">{{ finca.name }}</h1>
               <p class="text-lg md:text-xl mb-6">{{ finca.descripcion }}</p>
+              <p class="text-lg md:text-xl mb-6">{{ finca.prueba }}</p>
           </div>
           <div class="w-full md:w-1/2 md:pl-12">
               <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 shadow-2xl">
@@ -59,7 +60,7 @@
         <img src="/assets/img/imagen2.jpg" alt="Descripción de la imagen" class="w-full h-full object-cover rounded">
       </div>
       <p class="text-lg font-bold text-black dark:text-gray-200">Composición del núcleo familiar:</p>
-      <p class="mt-2 text-gray-800 dark:text-gray-300">Aquí va la composición del núcleo familiar.</p>
+      <p class="mt-2 text-gray-800 dark:text-gray-300">{{finca.prueba}}.</p>
       <p class="text-lg font-bold text-black dark:text-gray-200 mt-4">Nombre del productor:</p>
       <p class="text-gray-800 dark:text-gray-300">Aquí va el nombre del productor.</p>
       <p class="text-lg font-bold text-black dark:text-gray-200 mt-4">Edad:</p>

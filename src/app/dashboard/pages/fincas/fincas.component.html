@@ -1,0 +1,196 @@
+<!-- Botón para abrir el modal -->
+<button
+  class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+  (click)="openModal()"
+>
+  Crear Resultado
+</button>
+
+
+<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+  <table
+    class="w-full border-collapse bg-white text-left text-sm text-gray-500"
+  >
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nombre de finca</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          Tipo Producto
+        </th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nombre del Productor</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">imagen</th>
+
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Estado</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+     
+      <tr *ngFor="let fincas of finca" class="hover:bg-gray-50">
+        <td>{{ fincas.nombreFinca }}</td>
+        <td>{{ fincas.nombreProductor }}</td>
+        <td>{{ fincas.imagen }}</td>
+        <td>{{ fincas.estado }}</td>
+        <td>
+          <td class="px-6 py-4">
+            <div class="flex justify-end gap-4">
+              <a x-data="{ tooltip: 'Delete' }" href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </a>
+              <a x-data="{ tooltip: 'Edite' }" href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                  />
+                </svg>
+              </a>
+            </div>
+            <button>Eliminar</button>
+          </td>
+          
+
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-4">
+    <h2 class="text-lg font-semibold mb-4">Formulario de Resultado</h2>
+    
+    <!-- Formulario -->
+    <form [formGroup]="fincaForm" (ngSubmit)="handleSubmit()">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Municipio -->
+        <div class="mb-4">
+          <label for="municipio" class="block text-sm font-medium text-gray-700">Municipio</label>
+          <input type="text" formControlName="municipio" id="municipio" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('municipio')?.invalid && fincaForm.get('municipio')?.touched" class="text-red-600 text-sm mt-1">
+            <p>El municipio es requerido.</p>
+          </div>
+        </div>
+
+        <!-- Vereda -->
+        <div class="mb-4">
+          <label for="vereda" class="block text-sm font-medium text-gray-700">Vereda</label>
+          <input type="text" formControlName="vereda" id="vereda" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('vereda')?.invalid && fincaForm.get('vereda')?.touched" class="text-red-600 text-sm mt-1">
+            <p>La vereda es requerida.</p>
+          </div>
+        </div>
+
+        <!-- Nombre de la Finca -->
+        <div class="mb-4">
+          <label for="nombreFinca" class="block text-sm font-medium text-gray-700">Nombre de la Finca</label>
+          <input type="text" formControlName="nombreFinca" id="nombreFinca" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('nombreFinca')?.invalid && fincaForm.get('nombreFinca')?.touched" class="text-red-600 text-sm mt-1">
+            <p>El nombre de la finca es requerido.</p>
+          </div>
+        </div>
+
+        <!-- Nombre del Productor -->
+        <div class="mb-4">
+          <label for="nombreProductor" class="block text-sm font-medium text-gray-700">Nombre del Productor</label>
+          <input type="text" formControlName="nombreProductor" id="nombreProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('nombreProductor')?.invalid && fincaForm.get('nombreProductor')?.touched" class="text-red-600 text-sm mt-1">
+            <p>El nombre del productor es requerido.</p>
+          </div>
+        </div>
+
+        <!-- Edad -->
+        <div class="mb-4">
+          <label for="edad" class="block text-sm font-medium text-gray-700">Edad</label>
+          <input type="number" formControlName="edad" id="edad" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('edad')?.invalid && fincaForm.get('edad')?.touched" class="text-red-600 text-sm mt-1">
+            <p>La edad es requerida.</p>
+          </div>
+        </div>
+
+        <!-- Tipo de Productor -->
+        <div class="mb-4">
+          <label for="tipoProductor" class="block text-sm font-medium text-gray-700">Tipo de Productor</label>
+          <select formControlName="tipoProductor" id="tipoProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm">
+            <option value="" disabled>Seleccione una opción</option>
+            <option value="cafe">Café</option>
+            <option value="cacao">Cacao</option>
+          </select>
+          <div *ngIf="fincaForm.get('tipoProductor')?.invalid && fincaForm.get('tipoProductor')?.touched" class="text-red-600 text-sm mt-1">
+            <p>El tipo de productor es requerido.</p>
+          </div>
+        </div>
+
+        <!-- Detalles del Producto -->
+        <div class="mb-4 col-span-2">
+          <label for="detallesProducto" class="block text-sm font-medium text-gray-700">Detalles del Producto</label>
+          <textarea formControlName="detallesProducto" id="detallesProducto" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"></textarea>
+          <div *ngIf="fincaForm.get('detallesProducto')?.invalid && fincaForm.get('detallesProducto')?.touched" class="text-red-600 text-sm mt-1">
+            <p>Los detalles del producto son requeridos.</p>
+          </div>
+        </div>
+
+        <!-- Altitud -->
+        <div class="mb-4">
+          <label for="altitud" class="block text-sm font-medium text-gray-700">Altitud</label>
+          <input type="number" formControlName="altitud" id="altitud" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('altitud')?.invalid && fincaForm.get('altitud')?.touched" class="text-red-600 text-sm mt-1">
+            <p>La altitud es requerida.</p>
+          </div>
+        </div>
+
+        <!-- Temperatura -->
+        <div class="mb-4">
+          <label for="temperatura" class="block text-sm font-medium text-gray-700">Temperatura</label>
+          <input type="number" formControlName="temperatura" id="temperatura" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <div *ngIf="fincaForm.get('temperatura')?.invalid && fincaForm.get('temperatura')?.touched" class="text-red-600 text-sm mt-1">
+            <p>La temperatura es requerida.</p>
+          </div>
+        </div>
+
+        <!-- Imagen -->
+        <div class="mb-4 col-span-2">
+          <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
+          <input type="file" formControlName="imagen" (change)="handleImageUpload($event)" id="imagen" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-blue-700 hover:file:bg-gray-300" />
+        </div>
+      </div>
+
+      <!-- Botón de enviar -->
+      <button  (click)="closeModal()" type="button"  class="w-full rouder-lg bg-red-600 py-2 px-4 font-sans text-sm font-bold  uppercase text-white shadow-md  hover:bg-red-700 focus:outline-none focus-ring-2 focus:ring-red-600">
+        cancelar
+      </button> 
+
+      <button type="submit" [disabled]="fincaForm.invalid" class="w-full rounded-lg bg-blue-500 py-2 px-4 font-sans text-sm font-bold uppercase text-white shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        Guardar
+      </button>
+    </form>
+
+    <!-- Botón para cerrar el modal -->
+    
+  </div>
+</div>

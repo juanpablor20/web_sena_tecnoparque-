@@ -1,0 +1,57 @@
+<button
+  class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+  (click)="openModal()"
+>
+  Crear Usuario
+</button>
+
+<div *ngIf="isModalOpen" class="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover">
+  <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+  <div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
+    <div class="text-center">
+      <h2 class="mt-5 text-3xl font-bold text-gray-900">
+        Subir Imagen
+      </h2>
+      <p class="mt-2 text-sm text-gray-400">Selecciona una imagen para cargar</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="mt-8 space-y-3">
+      <!-- Titulo -->
+      <div class="grid grid-cols-1 space-y-2">
+        <label class="text-sm font-bold text-gray-500 tracking-wide">Titulo</label>
+        <input [(ngModel)]="titulo" name="titulo" class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" placeholder="Título de la imagen" required>
+      </div>
+
+      <!-- Input de imagen -->
+      <div class="grid grid-cols-1 space-y-2">
+        <label class="text-sm font-bold text-gray-500 tracking-wide">Imagen</label>
+        <div class="flex items-center justify-center w-full">
+          <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+            <div class="h-full w-full text-center flex flex-col items-center justify-center">
+              <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="Imagen de ejemplo">
+              <p class="text-gray-500"><span class="text-sm">Arrastra y suelta</span> archivos aquí o <a href="" class="text-blue-600 hover:underline" (click)="fileInput.click()">selecciona un archivo</a></p>
+            </div>
+            <input type="file" #fileInput (change)="onFileSelected($event)" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-300"><span>Formatos permitidos: .jpg, .png, .gif</span></p>
+
+      <!-- Botones de acción -->
+      <div class="flex justify-between">
+        <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+          Subir
+        </button>
+
+        <button
+          type="button"
+          class="my-5 w-full flex justify-center bg-red-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-red-600 shadow-lg cursor-pointer transition ease-in duration-300"
+          (click)="closeModal()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

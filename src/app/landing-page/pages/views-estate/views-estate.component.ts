@@ -1,9 +1,9 @@
-import { FarmsService } from './../../../core/services/farms.service';
+import { FarmsService } from '../../../core/services/farms.service';
 import { CommonModule } from '@angular/common';
 import { Component, Input, input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { initFlowbite } from 'flowbite';
+
 @Component({
   selector: 'app-views-estate',
   standalone: true,

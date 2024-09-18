@@ -1,0 +1,62 @@
+<button
+  class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+  data-ripple-light="true" (click)="openModal()"
+>
+  Crear Resultado
+</button>
+
+<div *ngIf="isModalOpen" class="bg-gray-500 h-screen w-screen sm:px-8 md:px-16 sm:py-8">
+    <main class="container mx-auto max-w-screen-lg h-full">
+        <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-xl rounded-md p-4">
+            <!-- Título -->
+            <div class="mb-4">
+                <label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
+                <input type="text" id="titulo" class="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
+            </div>
+
+            <!-- Resumen -->
+            <div class="mb-4">
+                <label for="resumen" class="block text-sm font-medium text-gray-700">Resumen</label>
+                <textarea type="text" id="resumen" class="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
+                </textarea>
+                </div>
+
+            <!-- Subir cartilla (PDF) -->
+            <div class="mb-4">
+                <label for="cartilla" class="block text-sm font-medium text-gray-700">Subir cartilla (PDF)</label>
+                <input type="file" id="cartilla" accept=".pdf" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-blue-700 hover:file:bg-gray-300">
+            </div>
+
+            <!-- Subir ficha (PDF) -->
+            <div class="mb-4">
+                <label for="ficha" class="block text-sm font-medium text-gray-700">Subir ficha (PDF)</label>
+                <input type="file" id="ficha" accept=".pdf" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-blue-700 hover:file:bg-gray-300">
+            </div>
+
+            <!-- Subir foto -->
+            <div class="mb-4">
+                <label for="foto" class="block text-sm font-medium text-gray-700">Subir foto</label>
+                <input type="file" id="foto" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-blue-700 hover:file:bg-gray-300">
+            </div>
+
+            <!-- Tipo de resultado (select) -->
+            <div class="mb-4">
+                <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de resultado</label>
+                <select id="tipo" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm">
+                    <option value="cafe">Café</option>
+                    <option value="cacao">Cacao</option>
+                </select>
+            </div>
+
+            <!-- Botones -->
+            <div class="flex justify-end mt-6">
+                <button id="submit" class="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none">
+                    Subir archivos
+                </button>
+                <button  (click)="closeModal()" class="ml-3 rounded-sm px-3 py-1 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+                    Cancelar
+                </button>
+            </div>
+        </article>
+    </main>
+</div>

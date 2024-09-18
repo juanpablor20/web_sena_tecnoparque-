@@ -20,14 +20,15 @@ export class FarmsService {
     {
       id: 2,
       name: 'finca 2',
-      image: '/assets/img/imagen2.jpg',
+      image: '/assets/img/goku.jpg',
       description: 'Description of estate 2.',
+      prueba: ' por franklin cuellar ',
       link: '/estate/2',
     },
     {
       id: 3,
       name: 'finca 3',
-      image: '/assets/img/imagen3.jpg',
+      image: '/assets/img/goku.jpg',
       description: 'Description of estate 3.',
       link: '/estate/3',
     },
@@ -36,8 +37,18 @@ export class FarmsService {
       name: 'finca 4',
       image: '/assets/img/imagen1.jpg',
       description: 'Description of estate 4.',
-      link: 'dashboard',
+      link: '/estate/4',
     },
+    {
+      id: 5,
+      name: 'finca 5',
+      image: '/assets/img/goku.jpg',
+      description: 'Description of estate 4.',
+      prueba: 'por juan pablo ',
+      link: '/estate/5',
+    },
+    
+    
   ];
 
   getEstates(): Observable<any[]> {
