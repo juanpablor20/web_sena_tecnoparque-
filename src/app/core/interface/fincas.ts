@@ -12,5 +12,4 @@ export interface Fincas {
     altitud: string;
     temperatura: string;
     imagen: string;
-    estado: string;
 }
