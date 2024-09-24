@@ -4,69 +4,24 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { FincasService } from './../../../core/services/fincas.service';
 import { Fincas } from '../../../core/interface/fincas';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Imagenes } from '../../../core/interface/imagenes';
+
 @Component({
   selector: 'app-fincas',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,  NgxPaginationModule],
+  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule],
   templateUrl: './fincas.component.html',
   styleUrls: ['./fincas.component.css'],
 })
 export default class FincasComponent implements OnInit {
-
-
-  // Definir finca como array de Fincas
   finca: Fincas[] = [];
-  data: Fincas[] = [];
-
   totalItems: number = 0;
   currentPage: number = 1;
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 50;
   lastPage: number = 1;
-  paginationId: string = 'finca-pagination'; // Definir un ID único
-  fincas: Fincas = {municipio: '',  vereda:'', nombreFinca: '', nombreProductor:'',    edad: '', tipoProductor: '', detallesProducto: '', altitud: '', temperatura:'', imagen: ''  }
-  constructor(private fincasService: FincasService) {
-    this.obtenerFincas();
-  }
-  ngOnInit() {
-    this.obtenerFincas();
-  }
-
-  // obtenerFincas() {
-  //   this.fincasService.obtenerFincas(this.currentPage, this.itemsPerPage).subscribe(response => {
-  //     this.finca = response.data;
-  //     this.totalItems = response.meta.total;
-  //     this.lastPage = response.meta.lastPage;
-  //   });
-  // }
-
-
-  obtenerFincas() {
-    this.fincasService.obtenerFincas(this.currentPage, this.itemsPerPage).subscribe(response => {
-      this.finca = response.data;
-      this.totalItems = response.meta.total; // Set the totalItems property
-      this.lastPage = response.meta.lastPage;
-    });
-  }
-  // cambiarPagina(page: number) {
-  //   if (page > 0 && page <= this.lastPage) {
-  //     this.currentPage = page;
-  //     this.obtenerFincas();
-  //   }
-  // }
-  // cambiarPagina(page: number) {
-  //   if (page > 0 && page <= this.lastPage) {
-  //     this.currentPage = page;
-  //     this.obtenerFincas();
-  //   }
-  // }
-  cambiarPagina(page: number) {
-    this.currentPage = page;
-    this.obtenerFincas();
-  }
-
- 
-
-  // Formulario reactivo con los campos requeridos
+  paginationId: string = 'finca-pagination';
+  isModalOpen = false;
+  
   fincaForm = new FormGroup({
     municipio: new FormControl('', Validators.required),
     vereda: new FormControl('', Validators.required),
@@ -77,24 +32,39 @@ export default class FincasComponent implements OnInit {
     detallesProducto: new FormControl('', Validators.required),
     altitud: new FormControl('', Validators.required),
     temperatura: new FormControl('', Validators.required),
-    imagen: new FormControl(null),
+    fotoFinca: new FormControl(null),
+    fotoProductor: new FormControl(null),
+    fotoProceso: new FormControl(null),
+    fotoProcesoFin: new FormControl(null),
   });
 
-  isModalOpen = false;
-
-
-  handleSubmit(){
-    this.fincasService.crearFincas(this.fincas).subscribe(() => {
-      this.obtenerFincas();
-      this.closeModal();
-    })
+  constructor(private fincasService: FincasService) {
+    this.obtenerFincas();
   }
- 
-  handleImageUpload(event: Event) {
+
+  ngOnInit() {
+    this.obtenerFincas();
+  }
+
+  obtenerFincas() {
+    this.fincasService.obtenerFincas(this.currentPage, this.itemsPerPage).subscribe(response => {
+      this.finca = response.data;
+      this.totalItems = response.meta.total;
+      this.lastPage = response.meta.lastPage;
+    });
+  }
+
+  cambiarPagina(page: number) {
+    if (page > 0 && page <= this.lastPage) {
+      this.currentPage = page;
+      this.obtenerFincas();
+    }
+  }
+
+  handleImageUpload(event: Event, field: keyof Fincas) {
     const input = event.target as HTMLInputElement;
     if (input?.files?.length) {
       const file = input.files[0];
-      // Validar el archivo
       const allowedMimeTypes = ['image/png', 'image/jpeg'];
       const maxSizeInBytes = 1048576; // 1 MB
 
@@ -109,30 +79,71 @@ export default class FincasComponent implements OnInit {
       }
 
       console.log('Archivo válido:', file);
-      // Aquí puedes continuar con el proceso de subir la imagen
+     // this.fincaForm.get(field)?.setValue(file); // Asigna el archivo al campo correspondiente
     }
   }
+  handleSubmit() {
+    if (this.fincaForm.invalid) {
+      alert('Por favor, completa todos los campos requeridos.');
+      return;
+    }
+  
+    const formData = new FormData();
+    for (const key in this.fincaForm.controls) {
+      const value = this.fincaForm.get(key)?.value;
+      if (value !== null && value !== '') {
+        formData.append(key, value);
+      }
+    }
+    
+    // // Añadir imágenes solo si existen y son válidas
+    // if (this.fincas.fotoFinca instanceof File) {
+    //   formData.append('fotoFinca', this.fincas.fotoFinca);
+    // }
+    // if (this.fincas.fotoProductor instanceof File) {
+    //   formData.append('fotoProductor', this.fincas.fotoProductor);
+    // }
+    // if (this.fincas.fotoProceso instanceof File) {
+    //   formData.append('fotoProceso', this.fincas.fotoProceso);
+    // }
+    // if (this.fincas.fotoProcesoFin instanceof File) {
+    //   formData.append('fotoProcesoFin', this.fincas.fotoProcesoFin);
+    // }
+  
+    this.fincasService.crearFincas(formData).subscribe({
+      next: () => {
+        this.obtenerFincas();
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Error al crear la finca:', err);
+        alert('Ocurrió un error al crear la finca: ' + (err.error.message?.join(', ') || 'Error desconocido'));
+      }
+    });
+  }
 
-  // Abrir y cerrar modal
   openModal() {
     this.isModalOpen = true;
   }
- 
+
   closeModal() {
     this.isModalOpen = false;
+    this.fincaForm.reset(); // Limpiar el formulario al cerrar el modal
   }
+
+  // getImagen(item: Fincas, tipoImagen: string): string {
+  //   const imagen = item["imagenes"].find((imagen: Imagenes) => imagen.tipoImagen === tipoImagen);
+  //   return imagen ? '' + imagen.url : '/uploads/goku.jpg'; // Ruta por defecto si no hay imagen
+  // }
+
+
+  getImagen(item: Fincas, tipoImagen: string): string {
+    const baseUrl = 'http://localhost:3001'; // URL de tu backend
+    const imagen = item["imagenes"].find((imagen: Imagenes) => imagen.tipoImagen === tipoImagen);
+    
+    // Si encuentra la imagen, devuelve la ruta completa
+    return imagen ? `${baseUrl}${imagen.url}` : `${baseUrl}/uploads/goku.jpg`; // Ruta por defecto si no hay imagen
+  }
+  
+  
 }
-
-
-
-
-
- 
-
-
-  
-
-  
-
-  
-

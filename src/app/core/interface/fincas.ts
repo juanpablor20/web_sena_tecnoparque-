@@ -1,7 +1,5 @@
 export interface Fincas {
-
-
-    id?: number;
+  id?: number;
     municipio: string;
     vereda: string;
     nombreFinca: string;
@@ -11,5 +9,12 @@ export interface Fincas {
     detallesProducto: string;
     altitud: string;
     temperatura: string;
-    imagen: string;
-}
+    fotoFinca?: File | null;
+    fotoProductor?: File | null;
+    fotoProceso?: File | null;
+    fotoProcesoFin?: File | null;
+    fincaId: number;
+    // Añade esta línea para permitir acceso con un índice de tipo string
+    [key: string]: any;
+  }
+  

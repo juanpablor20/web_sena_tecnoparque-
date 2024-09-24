@@ -12,26 +12,6 @@ export class FincasService {
 
   constructor(private http: HttpClient) { }
 
-  // obtenerFincas(): Observable<Fincas[]> {
-  //   // El tipo ahora refleja la estructura correcta del objeto devuelto por la API
-  //   return this.http.get<{ data: Fincas[] }>(this.apiUrl).pipe(
-  //     // Extraer solo el array 'data'
-  //     map(response => response.data)
-  //   );
-  // }
-  // obtenerFincas(pagina: number = 1, limite: number = 10): Observable<any> {
-  //   let params = new HttpParams().set('page', pagina).set('limit', limite);
-  //   return this.http.get<any>(this.apiUrl, { params });
-  // }
-
-  // obtenerFincas(page: number = 1, itemsPerPage: number = 10): Observable<any> {
-  //   let params = new HttpParams()
-  //     .set('page', page.toString())
-  //     .set('limit', itemsPerPage.toString());
-
-  //   return this.http.get<any>(this.apiUrl, { params });
-  // }
-
   obtenerFincas(page: number, limit: number): Observable<any> {
     let params = new HttpParams()
       .set('page', page.toString())
@@ -39,9 +19,8 @@ export class FincasService {
 
     return this.http.get<any>(this.apiUrl, { params });
   }
-  
 
-  crearFincas(fincas: Fincas): Observable<Fincas> {
-    return this.http.post<Fincas>(this.apiUrlCreate, fincas);
+  crearFincas(formData: FormData): Observable<Fincas> {
+    return this.http.post<Fincas>(this.apiUrlCreate, formData);
   }
 }

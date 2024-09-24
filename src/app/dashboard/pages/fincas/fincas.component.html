@@ -26,12 +26,18 @@
     </thead>
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
         
-      @for( item of finca; track item.id ){
+      @for( item of finca; track  item.id ){
       <tr   class="hover:bg-gray-50">
-        <td>{{item.id}}</td>
+        <td>{{ item.id }}</td>
         <td>{{ item.nombreProductor }}</td>
         <td>{{ item.nombreFinca }}</td>
-        <td>{{ item.imagen }}</td>
+        <!-- <td>{{ getImagen(item, 'fotoFinca') }}</td> -->
+     
+
+       
+        <img [src]="getImagen(item, 'fotoFinca')" alt="Imagen de la finca" width="100" height="100" />
+      
+
         <td class="px-6 py-4">
           <div class="flex justify-end gap-4">
             <a x-data="{ tooltip: 'Delete' }" href="#">
@@ -90,65 +96,54 @@
     
   </table>
 </div>
-
-
-<!-- Modal -->
+Modal
 <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
-  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-4">
-    <h2 class="text-lg font-semibold mb-4">Formulario de Resultado</h2>
-    
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-4xl p-6">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Formulario de Resultado</h2>
+
     <!-- Formulario -->
     <form [formGroup]="fincaForm" (ngSubmit)="handleSubmit()">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Municipio -->
-        <div class="mb-4">
+        <div>
           <label for="municipio" class="block text-sm font-medium text-gray-700">Municipio</label>
-          <input type="text" formControlName="municipio" id="municipio" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="municipio" id="municipio" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('municipio')?.invalid && fincaForm.get('municipio')?.touched" class="text-red-600 text-sm mt-1">
             <p>El municipio es requerido.</p>
           </div>
         </div>
 
         <!-- Vereda -->
-        <div class="mb-4">
+        <div>
           <label for="vereda" class="block text-sm font-medium text-gray-700">Vereda</label>
-          <input type="text" formControlName="vereda" id="vereda" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="vereda" id="vereda" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('vereda')?.invalid && fincaForm.get('vereda')?.touched" class="text-red-600 text-sm mt-1">
             <p>La vereda es requerida.</p>
           </div>
         </div>
 
         <!-- Nombre de la Finca -->
-        <div class="mb-4">
+        <div>
           <label for="nombreFinca" class="block text-sm font-medium text-gray-700">Nombre de la Finca</label>
-          <input type="text" formControlName="nombreFinca" id="nombreFinca" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="nombreFinca" id="nombreFinca" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('nombreFinca')?.invalid && fincaForm.get('nombreFinca')?.touched" class="text-red-600 text-sm mt-1">
             <p>El nombre de la finca es requerido.</p>
           </div>
         </div>
 
         <!-- Nombre del Productor -->
-        <div class="mb-4">
+        <div>
           <label for="nombreProductor" class="block text-sm font-medium text-gray-700">Nombre del Productor</label>
-          <input type="text" formControlName="nombreProductor" id="nombreProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="nombreProductor" id="nombreProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('nombreProductor')?.invalid && fincaForm.get('nombreProductor')?.touched" class="text-red-600 text-sm mt-1">
             <p>El nombre del productor es requerido.</p>
           </div>
         </div>
 
-        <!-- Edad -->
-        <div class="mb-4">
-          <label for="edad" class="block text-sm font-medium text-gray-700">Edad</label>
-          <input type="number" formControlName="edad" id="edad" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
-          <div *ngIf="fincaForm.get('edad')?.invalid && fincaForm.get('edad')?.touched" class="text-red-600 text-sm mt-1">
-            <p>La edad es requerida.</p>
-          </div>
-        </div>
-
         <!-- Tipo de Productor -->
-        <div class="mb-4">
+        <div>
           <label for="tipoProductor" class="block text-sm font-medium text-gray-700">Tipo de Productor</label>
-          <select formControlName="tipoProductor" id="tipoProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm">
+          <select formControlName="tipoProductor" id="tipoProductor" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required>
             <option value="" disabled>Seleccione una opción</option>
             <option value="cafe">Café</option>
             <option value="cacao">Cacao</option>
@@ -159,50 +154,74 @@
         </div>
 
         <!-- Detalles del Producto -->
-        <div class="mb-4 col-span-2">
+        <div>
           <label for="detallesProducto" class="block text-sm font-medium text-gray-700">Detalles del Producto</label>
-          <textarea formControlName="detallesProducto" id="detallesProducto" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"></textarea>
+          <input type="text" formControlName="detallesProducto" id="detallesProducto" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" placeholder="ejemplo, café caturra" required />
           <div *ngIf="fincaForm.get('detallesProducto')?.invalid && fincaForm.get('detallesProducto')?.touched" class="text-red-600 text-sm mt-1">
             <p>Los detalles del producto son requeridos.</p>
           </div>
         </div>
 
+        <!-- Edad -->
+        <div>
+          <label for="edad" class="block text-sm font-medium text-gray-700">Edad</label>
+          <input type="number" formControlName="edad" id="edad" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
+          <div *ngIf="fincaForm.get('edad')?.invalid && fincaForm.get('edad')?.touched" class="text-red-600 text-sm mt-1">
+            <p>La edad es requerida.</p>
+          </div>
+        </div>
+
         <!-- Altitud -->
-        <div class="mb-4">
+        <div>
           <label for="altitud" class="block text-sm font-medium text-gray-700">Altitud</label>
-          <input type="number" formControlName="altitud" id="altitud" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="altitud" id="altitud" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('altitud')?.invalid && fincaForm.get('altitud')?.touched" class="text-red-600 text-sm mt-1">
             <p>La altitud es requerida.</p>
           </div>
         </div>
 
         <!-- Temperatura -->
-        <div class="mb-4">
+        <div>
           <label for="temperatura" class="block text-sm font-medium text-gray-700">Temperatura</label>
-          <input type="number" formControlName="temperatura" id="temperatura" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" />
+          <input type="text" formControlName="temperatura" id="temperatura" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm" required />
           <div *ngIf="fincaForm.get('temperatura')?.invalid && fincaForm.get('temperatura')?.touched" class="text-red-600 text-sm mt-1">
             <p>La temperatura es requerida.</p>
           </div>
         </div>
+      </div>
 
-        <!-- Imagen -->
-        <div class="mb-4 col-span-2">
-          <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
-          <input type="file" formControlName="imagen" (change)="handleImageUpload($event)" id="imagen" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-blue-700 hover:file:bg-gray-300" />
+      <!-- Sección para subir imágenes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <!-- Imagen de la Finca -->
+        <div class="relative border border-dashed border-gray-400 rounded-md p-4 text-center">
+          <label for="imagenFinca" class="block text-sm font-medium text-gray-700 mb-2">Imagen de la Finca</label>
+          <input type="file" (change)="handleImageUpload($event, 'fotoFinca')" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+          <svg class="w-12 h-12 mx-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10c0 1.104.896 2 2 2h14c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2H5c-1.104 0-2 .896-2 2z" />
+          </svg>
+          <p class="text-sm text-gray-600 mt-2">Subir Imagen</p>
+        </div>
+
+        <!-- Imagen del Productor -->
+        <div class="relative border border-dashed border-gray-400 rounded-md p-4 text-center">
+          <label for="imagenProductor" class="block text-sm font-medium text-gray-700 mb-2">Imagen del Productor</label>
+          <input type="file" (change)="handleImageUpload($event, 'fotoProductor')" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+          <svg class="w-12 h-12 mx-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10c0 1.104.896 2 2 2h14c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2H5c-1.104 0-2 .896-2 2z" />
+          </svg>
+          <p class="text-sm text-gray-600 mt-2">Subir Imagen</p>
         </div>
       </div>
 
-      <!-- Botón de enviar -->
-      <button  (click)="closeModal()" type="button"  class="w-full rouder-lg bg-red-600 py-2 px-4 font-sans text-sm font-bold  uppercase text-white shadow-md  hover:bg-red-700 focus:outline-none focus-ring-2 focus:ring-red-600">
-        cancelar
-      </button> 
-
-      <button type="submit" [disabled]="fincaForm.invalid" class="w-full rounded-lg bg-blue-500 py-2 px-4 font-sans text-sm font-bold uppercase text-white shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        Guardar
-      </button>
+      <!-- Botones -->
+      <div class="flex justify-end space-x-4 mt-6">
+        <button type="button" (click)="closeModal()" class="px-4 py-2 bg-gray-400 text-white rounded-md shadow-sm hover:bg-gray-500">
+          Cancelar
+        </button>
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700">
+          Guardar
+        </button>
+      </div>
     </form>
-
-    <!-- Botón para cerrar el modal -->
-    
   </div>
 </div>
