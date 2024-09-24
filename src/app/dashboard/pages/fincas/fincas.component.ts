@@ -38,6 +38,12 @@ export default class FincasComponent implements OnInit {
     fotoProcesoFin: new FormControl(null),
   });
 
+
+
+  fotoFincaPreview: string | ArrayBuffer | null = null;
+  fotoProductorPreview: string | ArrayBuffer | null = null;
+  fotoProcesoFinPreview: string | ArrayBuffer | null = null;
+  fotoProcesoPreview: string  | ArrayBuffer | null = null;
   constructor(private fincasService: FincasService) {
     this.obtenerFincas();
   }
@@ -61,6 +67,24 @@ export default class FincasComponent implements OnInit {
     }
   }
 
+  // handleImageUpload(event: Event, tipo: string) {
+  //   const file = (event.target as HTMLInputElement).files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       if (tipo === 'fotoFinca') {
+  //         this.fotoFincaPreview = reader.result;
+  //       } else if (tipo === 'fotoProductor') {
+  //         this.fotoProductorPreview = reader.result;
+  //       }else if (tipo === 'fotoProceso'){
+  //         this.fotoProcesoPreview = reader.result;
+  //       }else if (tipo === 'fotoProcesoFin') {
+  //         this.fotoProcesoFinPreview = reader.result;
+  //       }
+  //     };
+  //     reader.readAsDataURL(file); // Leer la imagen y generar la URL
+  //   }
+  // }
   handleImageUpload(event: Event, field: keyof Fincas) {
     const input = event.target as HTMLInputElement;
     if (input?.files?.length) {
@@ -82,6 +106,11 @@ export default class FincasComponent implements OnInit {
      // this.fincaForm.get(field)?.setValue(file); // Asigna el archivo al campo correspondiente
     }
   }
+  resetForm() {
+    this.fincaForm.reset();
+    this.fotoFincaPreview = null;
+    this.fotoProductorPreview = null;
+  }
   handleSubmit() {
     if (this.fincaForm.invalid) {
       alert('Por favor, completa todos los campos requeridos.');
@@ -89,27 +118,35 @@ export default class FincasComponent implements OnInit {
     }
   
     const formData = new FormData();
+  
+    // Añadir todos los campos del formulario al FormData
     for (const key in this.fincaForm.controls) {
       const value = this.fincaForm.get(key)?.value;
       if (value !== null && value !== '') {
         formData.append(key, value);
       }
     }
-    
-    // // Añadir imágenes solo si existen y son válidas
-    // if (this.fincas.fotoFinca instanceof File) {
-    //   formData.append('fotoFinca', this.fincas.fotoFinca);
-    // }
-    // if (this.fincas.fotoProductor instanceof File) {
-    //   formData.append('fotoProductor', this.fincas.fotoProductor);
-    // }
-    // if (this.fincas.fotoProceso instanceof File) {
-    //   formData.append('fotoProceso', this.fincas.fotoProceso);
-    // }
-    // if (this.fincas.fotoProcesoFin instanceof File) {
-    //   formData.append('fotoProcesoFin', this.fincas.fotoProcesoFin);
-    // }
   
+    // Añadir imágenes solo si existen y son válidas
+    const fotoFinca = this.fincaForm.get('fotoFinca')?.value;
+    const fotoProductor = this.fincaForm.get('fotoProductor')?.value;
+    const fotoProceso = this.fincaForm.get('fotoProceso')?.value;
+    const fotoProcesoFin = this.fincaForm.get('fotoProcesoFin')?.value;
+  
+    if (fotoFinca && typeof fotoFinca === 'object' && 'name' in fotoFinca) {
+      formData.append('fotoFinca', fotoFinca);
+    }
+    if (fotoProductor && typeof fotoProductor === 'object' && 'name' in fotoProductor) {
+      formData.append('fotoProductor', fotoProductor);
+    }
+    if (fotoProceso && typeof fotoProceso === 'object' && 'name' in fotoProceso) {
+      formData.append('fotoProceso', fotoProceso);
+    }
+    if (fotoProcesoFin && typeof fotoProcesoFin === 'object' && 'name' in fotoProcesoFin) {
+      formData.append('fotoProcesoFin', fotoProcesoFin);
+    }
+  
+    // Llamada al servicio para crear la finca
     this.fincasService.crearFincas(formData).subscribe({
       next: () => {
         this.obtenerFincas();
@@ -131,10 +168,6 @@ export default class FincasComponent implements OnInit {
     this.fincaForm.reset(); // Limpiar el formulario al cerrar el modal
   }
 
-  // getImagen(item: Fincas, tipoImagen: string): string {
-  //   const imagen = item["imagenes"].find((imagen: Imagenes) => imagen.tipoImagen === tipoImagen);
-  //   return imagen ? '' + imagen.url : '/uploads/goku.jpg'; // Ruta por defecto si no hay imagen
-  // }
 
 
   getImagen(item: Fincas, tipoImagen: string): string {
