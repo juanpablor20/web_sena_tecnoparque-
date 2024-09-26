@@ -87,25 +87,48 @@ export default class FincasComponent implements OnInit {
   // }
   handleImageUpload(event: Event, field: keyof Fincas) {
     const input = event.target as HTMLInputElement;
+    
     if (input?.files?.length) {
       const file = input.files[0];
       const allowedMimeTypes = ['image/png', 'image/jpeg'];
       const maxSizeInBytes = 1048576; // 1 MB
-
+  
+      // Validar el tipo de archivo
       if (!allowedMimeTypes.includes(file.type)) {
         alert('Por favor, sube una imagen válida (PNG o JPEG)');
         return;
       }
-
+  
+      // Validar el tamaño del archivo
       if (file.size > maxSizeInBytes) {
         alert('El archivo es demasiado grande. El tamaño máximo es 1 MB.');
         return;
       }
-
+  
       console.log('Archivo válido:', file);
-     // this.fincaForm.get(field)?.setValue(file); // Asigna el archivo al campo correspondiente
+  
+      // Asignar el archivo al campo correspondiente (si es necesario)
+      // this.fincaForm.get(field)?.setValue(file);
+  
+      // Leer la imagen y generar la URL para previsualización
+      const reader = new FileReader();
+      reader.onload = () => {
+        // Aquí se asignan las URL de previsualización según el tipo
+        if (field === 'fotoFinca') {
+          this.fotoFincaPreview = reader.result as string;
+        } else if (field === 'fotoProductor') {
+          this.fotoProductorPreview = reader.result as string;
+        } else if (field === 'fotoProceso') {
+          this.fotoProcesoPreview = reader.result as string;
+        } else if (field === 'fotoProcesoFin') {
+          this.fotoProcesoFinPreview = reader.result as string;
+        }
+      };
+      reader.readAsDataURL(file); // Leer la imagen y generar la URL
     }
   }
+  
+  
   resetForm() {
     this.fincaForm.reset();
     this.fotoFincaPreview = null;

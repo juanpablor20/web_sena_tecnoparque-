@@ -18,6 +18,16 @@ export class FarmsService {
       imagen3: '/assets/img/imagen1.jpg'
     },
     {
+      id: 1,
+      name: 'angostura',
+      image: '/assets/img/imagen1.jpg',
+      description: 'Description of estate 1.',
+      link: '/estate/1',
+      backGroundimage: '/assets/img/imagen1.jpg',
+      imagen2: '/assets/img/imagen1.jpg',
+      imagen3: '/assets/img/imagen1.jpg'
+    },
+    {
       id: 2,
       name: 'finca 2',
       image: '/assets/img/goku.jpg',
