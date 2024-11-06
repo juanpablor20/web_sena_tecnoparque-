@@ -18,6 +18,16 @@ export class FarmsService {
       imagen3: '/assets/img/imagen1.jpg'
     },
     {
+      id: 9,
+      name: 'buena vista',
+      image: '/assets/img/imagen1.jpg',
+      description: 'finca cafetera con agricultura familiar.',
+      link: '/estate/1',
+      backGroundimage: '/assets/img/imagen1.jpg',
+      imagen2: '/assets/img/imagen1.jpg',
+      imagen3: '/assets/img/imagen1.jpg'
+    },
+    {
       id: 1,
       name: 'angostura',
       image: '/assets/img/imagen1.jpg',

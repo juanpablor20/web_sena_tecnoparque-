@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SidemenuComponent } from '../shared/components/sidemenu/sidemenu.component';
 import { NavComponent } from '../shared/components/nav/nav.component';
 import { ToastComponent } from '../shared/components/toast/toast.component';
+import { ConfirmComponent } from '../shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,8 @@ import { ToastComponent } from '../shared/components/toast/toast.component';
     SidemenuComponent,
     RouterModule,
     ToastComponent,
-    NavComponent
+    NavComponent,
+    ConfirmComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',

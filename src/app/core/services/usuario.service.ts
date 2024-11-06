@@ -1,7 +1,7 @@
 
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Usuario } from '../interface/usuario';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -35,8 +35,18 @@ constructor(private http: HttpClient){}
 
 //   return this.http.patch<Usuario>(`${this.apiUrl}/${usuario.id}`, usuario);
 // }
+// actualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
+//   return this.http.patch<Usuario>(`${this.apiUrl}/${id}`, usuario); // Asegúrate de que 'id' sea el correcto.
+// }
+
 actualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
   return this.http.put<Usuario>(`${this.apiUrl}/usuarios/${id}`, usuario);
+
+}
+
+private handleError(error: any) {
+  console.error('Error en la solicitud', error);
+  return throwError(() => new Error('Algo salió mal; por favor intenta nuevamente más tarde.'));
 }
 
 

@@ -20,3 +20,10 @@
   .warning {
     background-color: orange;
   }
+
+  /* confirm-dialog.component.css */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}

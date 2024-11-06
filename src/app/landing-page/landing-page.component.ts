@@ -6,6 +6,9 @@ import { CtaSectionsComponent } from '../shared/cta-sections/cta-sections.compon
 import { IntroBannerComponent } from '../shared/intro-banner/intro-banner.component';
 import { AboutStartComponent } from '../shared/about-start/about-start.component';
 import { FarmsService } from '../core/services/farms.service';
+import { DescriptionProyectComponent } from '../shared/description-proyect/description-proyect.component';
+import { MicroorganismosComponent } from '../shared/microorganismos/microorganismos.component';
+import { GalleryCoffeComponent } from '../shared/gallery-coffe/gallery-coffe.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -15,7 +18,10 @@ import { FarmsService } from '../core/services/farms.service';
     FooterComponent,
     CtaSectionsComponent,
     IntroBannerComponent,
-    AboutStartComponent
+    DescriptionProyectComponent,
+    MicroorganismosComponent,
+    AboutStartComponent,
+    GalleryCoffeComponent
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
