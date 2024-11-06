@@ -9,6 +9,7 @@ import { FarmsService } from '../core/services/farms.service';
 import { DescriptionProyectComponent } from '../shared/description-proyect/description-proyect.component';
 import { MicroorganismosComponent } from '../shared/microorganismos/microorganismos.component';
 import { GalleryCoffeComponent } from '../shared/gallery-coffe/gallery-coffe.component';
+import { TeamComponent } from '../shared/team/team.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -21,7 +22,8 @@ import { GalleryCoffeComponent } from '../shared/gallery-coffe/gallery-coffe.com
     DescriptionProyectComponent,
     MicroorganismosComponent,
     AboutStartComponent,
-    GalleryCoffeComponent
+    GalleryCoffeComponent,
+    TeamComponent
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'

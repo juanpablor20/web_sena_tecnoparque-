@@ -15,14 +15,12 @@
         <p
           class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 dark:text-gray-400 sm:mt-4"
         >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
-          similique necessitatibus consectetur dolor, maiores quia quasi ea
-          consequatur eveniet accusantium aliquid fugiat corporis a odio iste
-          praesentium quidem possimus voluptatem?
+          Sección dedicada a las fincas donde se realizaron pruebas con microorganismos, específicamente levaduras.
         </p>
       </div>
 
-      <div class="flex gap-x-4 flex-wrap gap-4  justify-between">
+      <!-- Configuración para que se muestren en tres columnas -->
+      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <app-item-card
           *ngFor="let item of items"
           [name]="item.name"
