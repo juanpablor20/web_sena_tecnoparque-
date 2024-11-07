@@ -1,0 +1,57 @@
+section {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente las imágenes */
+    gap: 5px;
+    /* Espacio entre las imágenes */
+    width: 80%;
+    /* Ajusta el ancho de la sección a un porcentaje más flexible */
+    margin: 0 auto;
+    /* Centra el contenedor de la sección */
+    height: 450px;
+}
+
+section img {
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+}
+
+section img:hover {
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+.custom-img {
+    width: 100%; /* Puedes ajustar este porcentaje para cambiar el tamaño relativo */
+    max-width: 150px; /* Tamaño máximo que tendrán las imágenes */
+    height: auto; /* Mantiene la proporción de las imágenes */
+}
+.container-xxl, .container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+#spin:after {
+    content:"";
+    animation: spin 10s linear infinite;
+}
+@keyframes spin {
+    0% { content:"marketing";}
+    20% { content:"content";}
+    40% { content:"engineering";}
+    60% { content:"crypto";}
+    80% { content:"consulting";}
+    100% { content:"business";}
+}
+
+h1, h2 {
+    background: #73738e;
+background: linear-gradient(to right, #aeafc1 0%, #e96711 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
