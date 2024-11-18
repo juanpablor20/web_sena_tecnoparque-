@@ -6,11 +6,14 @@
     <div
       class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
     >
+      <!-- Logo -->
       <a href="#" class="text-xl font-semibold text-gray-900 dark:text-white">
         Logo
       </a>
 
+      <!-- Botones de acciones como Login y Register -->
       <div class="flex items-center lg:order-2">
+        <!-- Cambiar tema -->
         <button
           id="theme-toggle"
           type="button"
@@ -40,67 +43,54 @@
           </svg>
         </button>
 
-        <a class="button"
-        routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"
-          class="inline-block py-2 px-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800 ml-4"
+        <!-- Botón Login -->
+        <a
+          routerLink="/login"
+          routerLinkActive="text-blue-600"
+          class="inline-block py-2 px-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 ml-4"
         >
           Login
         </a>
 
+        <!-- Botón Register -->
         <a
-        routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page"
-          class="inline-block py-2 px-4 ml-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+          routerLink="/register"
+          routerLinkActive="text-blue-600"
+          class="inline-block py-2 px-4 ml-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300"
         >
           Register
         </a>
-
-        <button
-          data-collapse-toggle="mobile-menu-2"
-          type="button"
-          class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="mobile-menu-2"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </button>
       </div>
 
+      <!-- Menú principal -->
       <div
         class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
         id="mobile-menu-2"
       >
         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
           <li>
-            <a class="button"
-            routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"
+            <a
+              routerLink="/home"
+              routerLinkActive="text-blue-600"
               class="block py-2 pr-4 pl-3 text-gray-700 hover:text-primary-700 dark:text-gray-400 dark:hover:text-white"
               >Home</a
             >
           </li>
-       
           <li>
-            <a class="button"
-            routerLink="/contacts" routerLinkActive="active" ariaCurrentWhenActive="page"
+            <a
+              routerLink="/contacts"
+              routerLinkActive="text-blue-600"
               class="block py-2 pr-4 pl-3 text-gray-700 hover:text-primary-700 dark:text-gray-400 dark:hover:text-white"
               >Contactos</a
             >
           </li>
-          <li>
+
+          <!-- Dropdown de Cartillas -->
+          <li class="relative">
             <button
               id="dropdownNavbarLink"
-              data-dropdown-toggle="dropdownNavbar"
               class="flex items-center py-2 pr-4 pl-3 text-gray-700 hover:text-primary-700 dark:text-gray-400 dark:hover:text-white"
+              (click)="toggleDropdown()"
             >
               Cartillas
               <svg class="w-3 h-3 ml-2" viewBox="0 0 10 6">
@@ -115,19 +105,22 @@
             </button>
             <div
               id="dropdownNavbar"
-              class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+              [class.hidden]="!isDropdownOpen"
+              class="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-400">
                 <li>
-                  <a class="button"
-                  routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page"
+                  <a
+                    routerLink="/cartillas/cacao"
+                    routerLinkActive="text-blue-600"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >Cacao</a
                   >
                 </li>
                 <li>
-                  <a class="button" 
-                  routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page"
+                  <a
+                    routerLink="/cartillas/cafe"
+                    routerLinkActive="text-blue-600"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >Café</a
                   >
@@ -139,6 +132,4 @@
       </div>
     </div>
   </nav>
-
-<router-outlet></router-outlet>
 </header>

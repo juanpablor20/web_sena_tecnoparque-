@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 export const routes: Routes = [
 
 
-  {path: '', redirectTo: 'LandingPageComponent', pathMatch: 'full'},
+  {path: 'home', redirectTo: 'LandingPageComponent', pathMatch: 'full'},
 
   {path: 'home', component: LandingPageComponent},
   { path: 'hola', component: ViewsEstateComponent },
