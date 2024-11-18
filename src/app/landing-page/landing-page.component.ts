@@ -8,7 +8,6 @@ import { AboutStartComponent } from '../shared/about-start/about-start.component
 import { FarmsService } from '../core/services/farms.service';
 import { DescriptionProyectComponent } from '../shared/description-proyect/description-proyect.component';
 import { MicroorganismosComponent } from '../shared/microorganismos/microorganismos.component';
-import { GalleryCoffeComponent } from '../shared/gallery-coffe/gallery-coffe.component';
 import { TeamComponent } from '../shared/team/team.component';
 
 @Component({
@@ -22,7 +21,6 @@ import { TeamComponent } from '../shared/team/team.component';
     DescriptionProyectComponent,
     MicroorganismosComponent,
     AboutStartComponent,
-    GalleryCoffeComponent,
     TeamComponent
   ],
   templateUrl: './landing-page.component.html',
