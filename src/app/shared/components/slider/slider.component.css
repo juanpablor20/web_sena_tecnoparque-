@@ -1,0 +1,15 @@
+.keen-slider {
+    position: relative;
+  }
+  
+  .keen-slider__slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .keen-slider__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
