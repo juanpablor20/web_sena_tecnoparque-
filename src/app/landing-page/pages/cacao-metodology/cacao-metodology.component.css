@@ -1,57 +1,155 @@
-section {
-    display: flex;
-    justify-content: center;
-    /* Centra horizontalmente las imágenes */
-    gap: 5px;
-    /* Espacio entre las imágenes */
-    width: 80%;
-    /* Ajusta el ancho de la sección a un porcentaje más flexible */
-    margin: 0 auto;
-    /* Centra el contenedor de la sección */
-    height: 450px;
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
 }
 
-section img {
-    width: 0px;
-    flex-grow: 1;
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+}
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    opacity: 0.8;
-    transition: 0.5s ease;
+}
+.banner .content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+.banner .content h1{
+    font-family: 'ICA Rubrik';
+    font-size: 16em;
+    line-height: 1em;
+    color: #25283B;
+    position: relative;
+}
+.banner .content h1::after{
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+.banner .content .author{
+    font-family: Poppins;
+    text-align: right;
+    max-width: 200px;
+}
+.banner .content h2{
+    font-size: 3em;
+}
+.banner .content .model{
+    /* background-image: url(images/model.png); */
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1;
+}
+@media screen and (max-width: 1023px) {
+    .banner .slider{
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(300px);
+    }
+    .banner .content h1{
+        text-align: center;
+        width: 100%;
+        text-shadow: 0 10px 20px #000;
+        font-size: 7em;
+    }
+    .banner .content .author{
+        color: #fff;
+        padding: 20px;
+        text-shadow: 0 10px 20px #000;
+        z-index: 2;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+    .banner .content h1{
+        font-size: 5em;
+    }
 }
 
-section img:hover {
-    cursor: crosshair;
-    width: 300px;
-    opacity: 1;
-    filter: contrast(120%);
-}
-.custom-img {
-    width: 100%; /* Puedes ajustar este porcentaje para cambiar el tamaño relativo */
-    max-width: 150px; /* Tamaño máximo que tendrán las imágenes */
-    height: auto; /* Mantiene la proporción de las imágenes */
-}
-.container-xxl, .container {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-
-#spin:after {
-    content:"";
-    animation: spin 10s linear infinite;
-}
-@keyframes spin {
-    0% { content:"marketing";}
-    20% { content:"content";}
-    40% { content:"engineering";}
-    60% { content:"crypto";}
-    80% { content:"consulting";}
-    100% { content:"business";}
-}
-
-h1, h2 {
-    background: #73738e;
-background: linear-gradient(to right, #aeafc1 0%, #e96711 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25d366;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-whatsapp:hover {
+    background-color: #128c7e;
+  }
+  
+  .fa-whatsapp {
+    margin-right: 8px;
+    font-size: 1.5rem;
+  }
+  

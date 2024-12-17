@@ -34,7 +34,7 @@ export class LoginComponent {
     this.accesoService.Login(object).subscribe({
       next: (data) => {
         if (data.accessToken) {
-          localStorage.setItem('accessToken', data.accessToken);
+          this.accesoService.saveToken(data.accessToken);
           this.router.navigate(['dashboard']);
         } else {
           alert('Usuario o contraseña incorrectos');
@@ -46,6 +46,10 @@ export class LoginComponent {
       },
     });
   }
+
+   
+     
+   
 
   register() {
     this.router.navigate(['register']);

@@ -1,43 +1,47 @@
 <section class="min-h-screen bg-white dark:bg-gray-900 py-12">
     <div class="container mx-auto px-6">
         <!-- Título de la sección -->
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">Microorganismos</h1>
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            Microorganismos
+        </h1>
 
         <!-- Descripción del contenido -->
-        <p class="text-gray-700 dark:text-gray-300 mb-10 text-center">
-            Durante el desarrollo de la investigación se utilizaron las levaduras <span class="font-semibold">FORTE</span> y 
-            <span class="font-semibold">MATUNDA</span> para los procesos de fermentación en cacao, y <span class="font-semibold">CIMA</span> e 
-            <span class="font-semibold">INTENSO</span> para la fermentación en café. Estas levaduras han sido desarrolladas por la empresa 
-            Lallemand Inc. y validadas a nivel internacional por el Instituto Nacional de Investigaciones Agronómicas (INRA) y el Centro 
-            de Cooperación Internacional en investigación agronómica para el desarrollo (CIRAD) de Francia.
+        <p class="text-gray-700 dark:text-gray-300 mb-10 text-center leading-relaxed max-w-3xl mx-auto">
+            Durante el desarrollo de la investigación se utilizaron las levaduras 
+            <span class="font-semibold text-blue-600 dark:text-blue-400">FORTE</span> y 
+            <span class="font-semibold text-blue-600 dark:text-blue-400">MATUNDA</span> para los procesos de fermentación en cacao, y 
+            <span class="font-semibold text-blue-600 dark:text-blue-400">CIMA</span> e 
+            <span class="font-semibold text-blue-600 dark:text-blue-400">INTENSO</span> para la fermentación en café.
         </p>
 
-        <!-- Contenedor de tarjetas -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Tarjeta 1 -->
+        <!-- Contenedor de tarjetas en 2 filas y 2 columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta dinámica -->
+            @for(item of levaduras; track item.title) {
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition-transform duration-300">
+                    <!-- Imagen mejorada -->
+                    <img class="w-full h-48 object-cover object-center" [src]="item.image" alt="Imagen {{ item.title }}" />
+                    
+                    <!-- Contenido de la tarjeta -->
+                    <div class="p-5">
+                        <h5 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                            {{ item.title }}
+                        </h5>
+                        <p class="mb-4 text-gray-700 dark:text-gray-400 leading-relaxed">
+                            {{ item.description }}
+                        </p>
 
-                @for(item of levaduras; track item.title){
-                   
-               
-                    <img class="rounded-t-lg" [src]="item.image" alt="Banner 1" />
-                
-                <div class="p-5">
-                    
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.title }}</h5>
-                    
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> {{ item.description }}</p>
-                    <a
-                    [href]="item.link" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Leer más
-                        <svg class="w-3.5 h-3.5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                        </svg>
-                    </a>
+                        <!-- Botón Leer Más -->
+                        <a [href]="item.link" 
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800 transition-colors duration-300">
+                            Leer más
+                            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            } 
-
-
-        
+            }
         </div>
     </div>
 </section>

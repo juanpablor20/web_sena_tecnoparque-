@@ -8,6 +8,7 @@ import { CacaoMetodologyComponent } from './landing-page/pages/cacao-metodology/
 import { CoffeMetodologyComponent } from './landing-page/pages/coffe-metodology/coffe-metodology.component';
 import { ContactsComponent } from './landing-page/pages/contacts/contacts.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -23,7 +24,7 @@ export const routes: Routes = [
   {path: 'MetodologiaCafe', component: CoffeMetodologyComponent},
 
   {
-    path:'dashboard',
+    path:'dashboard', canActivate: [AuthGuard],
     loadChildren:() => import('./dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES)
 },
   {path: '**', component: PageNotFoundComponent}

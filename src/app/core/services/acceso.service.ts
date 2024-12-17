@@ -26,5 +26,21 @@ return     this.http.post<ResponceAccess>(`${this.baseUrl}Acceso/register`, obje
   Login(objeto:Login): Observable<ResponceAccess>{
     return this.http.post<ResponceAccess>(`${this.baseUrl}auth/login`, objeto)
   }
+
+  saveToken(token: string): void {
+    localStorage.setItem('accessToken', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('accessToken');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  logout(): void {
+    localStorage.removeItem('accessToken');
+  }
    
 }
