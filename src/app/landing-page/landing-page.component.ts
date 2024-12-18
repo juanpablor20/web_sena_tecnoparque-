@@ -9,6 +9,7 @@ import { FarmsService } from '../core/services/farms.service';
 import { DescriptionProyectComponent } from '../shared/description-proyect/description-proyect.component';
 import { MicroorganismosComponent } from '../shared/microorganismos/microorganismos.component';
 import { TeamComponent } from '../shared/team/team.component';
+import { WasappButtonComponent } from '../shared/components/wasapp-button/wasapp-button.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -21,7 +22,8 @@ import { TeamComponent } from '../shared/team/team.component';
     DescriptionProyectComponent,
     MicroorganismosComponent,
     AboutStartComponent,
-    TeamComponent
+    TeamComponent,
+    WasappButtonComponent
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'

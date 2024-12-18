@@ -131,25 +131,3 @@
         font-size: 5em;
     }
 }
-
-.btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    background-color: #25d366;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-  
-  .btn-whatsapp:hover {
-    background-color: #128c7e;
-  }
-  
-  .fa-whatsapp {
-    margin-right: 8px;
-    font-size: 1.5rem;
-  }
-  

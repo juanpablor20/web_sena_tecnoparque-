@@ -31,12 +31,5 @@ export class CacaoMetodologyComponent {
   ];
 
 
-  phoneNumber: string = '573192575612'; // Reemplaza con tu número (sin + y sin espacios)
-  message: string = '¡Hola! Me gustaría saber más información.';
-  whatsappLink: string = '';
 
-  constructor() {
-    // Construir enlace de WhatsApp
-    this.whatsappLink = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(this.message)}`;
-  }
 }
