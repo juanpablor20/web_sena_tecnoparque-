@@ -1,23 +1,9 @@
  <app-navbar />
-<div class="container-banner">
-  <div class="banner">
-    <div class="slider" style="--quantity: {{ mazorcaImages.length }}">
-      @for (image of mazorcaImages; track image; let idx = $index) {
-      <div class="item" style="--position: {{ idx }}">
-        <img [src]="image" alt="" />
-      </div>
-
-      }
-    </div>
-    
-
-  </div>
-</div>
 
 
 
 
-<div
+ <div
   class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900"
 >
   <div
@@ -43,6 +29,28 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="container-banner">
+  <div class="banner">
+    <div class="slider" style="--quantity: {{ mazorcaImages.length }}">
+      @for (image of mazorcaImages; track image; let idx = $index) {
+      <div class="item" style="--position: {{ idx }}">
+        <img [src]="image" alt="" />
+      </div>
+
+      }
+    </div>
+    
+
+  </div>
+</div>
+
+
+
+
+
 
 <div class="bg-gray-100 dark:bg-gray-900 p-6 md:p-12 rounded-lg">
   <h1
