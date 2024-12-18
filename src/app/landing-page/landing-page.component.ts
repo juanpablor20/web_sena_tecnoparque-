@@ -4,7 +4,7 @@ import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { CtaSectionsComponent } from '../shared/cta-sections/cta-sections.component';
 import { IntroBannerComponent } from '../shared/intro-banner/intro-banner.component';
-import { AboutStartComponent } from '../shared/about-start/about-start.component';
+
 import { FarmsService } from '../core/services/farms.service';
 import { DescriptionProyectComponent } from '../shared/description-proyect/description-proyect.component';
 import { MicroorganismosComponent } from '../shared/microorganismos/microorganismos.component';
@@ -21,7 +21,7 @@ import { WasappButtonComponent } from '../shared/components/wasapp-button/wasapp
     IntroBannerComponent,
     DescriptionProyectComponent,
     MicroorganismosComponent,
-    AboutStartComponent,
+    
     TeamComponent,
     WasappButtonComponent
   ],

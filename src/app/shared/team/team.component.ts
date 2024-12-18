@@ -44,7 +44,7 @@ export class TeamComponent {
     {
       name: 'Juan Pablo Ramos Medina',
       image: 'assets/img/0Fotos_autores/juan_resultado.webp',
-      description: 'experto en angular.',
+      description: 'Programador junior con experiencia en Angular, Vue.js, NestJS, y JavaScript. Manejo sólido de PHP y Laravel para crear aplicaciones web completas, tanto en frontend como backend.',
       role: 'desarrollador'
     }
 
