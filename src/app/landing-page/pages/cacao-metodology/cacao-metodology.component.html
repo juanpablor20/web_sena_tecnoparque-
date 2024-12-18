@@ -1,95 +1,88 @@
-<app-navbar />
-<div class="banner">
+ <app-navbar />
+<div class="container-banner">
+  <div class="banner">
     <div class="slider" style="--quantity: {{ mazorcaImages.length }}">
-      @for (image of mazorcaImages; track image) {
-        <div class="item">
-          <img [src]="image" alt="Carousel image">
-        </div>  
+      @for (image of mazorcaImages; track image; let idx = $index) {
+      <div class="item" style="--position: {{ idx }}">
+        <img [src]="image" alt="" />
+      </div>
+
       }
     </div>
-    <div class="content">
-      <h1 data-content="CSS ONLY">Café</h1>
-      <div class="author">
-        <h2>LUN DEV</h2>
-        <p><b>Web Design</b></p>
-        <p>Juan Pablo Ramos</p>
-      </div>
-      <div class="model"></div>
+    
+
+  </div>
+</div>
+
+
+
+
+<div
+  class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900"
+>
+  <div
+    class="bg-gray-200 dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-indigo-500/50 shadow-indigo-500/50 max-w-3xl"
+  >
+    <div class="flex flex-col items-center text-center space-y-6">
+      <h1
+        class="font-light text-5xl md:text-6xl text-gray-800 dark:text-white tracking-wide"
+      >
+        Nosotros como investigadores de
+        <span
+          class="text-transparent font-semibold bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300"
+          >SENOVA</span
+        >
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400 text-xl md:text-2xl px-6">
+        Somos el grupo de investigación de SENOVA enfocado en el uso de
+        microorganismos para el beneficio del café y cacao, mejorando la calidad
+        del producto y promoviendo prácticas sostenibles en la industria
+        agropecuaria.
+      </p>
+     
     </div>
   </div>
-  
-
-
- 
-
-
-
-<div class='flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900'>
-    <div class="bg-gray-200 dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-indigo-500/50 shadow-indigo-500/50 max-w-3xl">
-        <div class="flex flex-col items-center text-center space-y-6">
-            <h1 class="font-light text-5xl md:text-6xl text-gray-800 dark:text-white tracking-wide">
-                Nosotros como investigadores de <span class="text-transparent font-semibold bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">SENOVA</span> 
-            </h1>
-            <p class="text-gray-600 dark:text-gray-400 text-xl md:text-2xl px-6">
-                Somos el grupo de investigación de SENOVA enfocado en el uso de microorganismos para el beneficio del café y cacao, mejorando la calidad del producto y promoviendo prácticas sostenibles en la industria agropecuaria.
-            </p>
-            <button class="rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white text-lg py-4 px-6 hover:bg-indigo-600 transition-colors">
-                Detalles
-            </button>
-        </div>
-    </div>
 </div>
-
-
 
 <div class="bg-gray-100 dark:bg-gray-900 p-6 md:p-12 rounded-lg">
-    <h1 class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-6 text-center">
-        Determinación de pH
-    </h1>
-<section>
-    <img src="/assets/img/Cacao(1)/6pHLab/20240623_104710_resultado.webp">
+  <h1
+    class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-6 text-center"
+  >
+    Determinación de pH
+  </h1>
+  <section>
+    <img src="/assets/img/Cacao(1)/6pHLab/20240623_104710_resultado.webp" />
 
+    <img src="/assets/img/Cacao(1)/6pHLab/20240626_111424_resultado.webp" />
 
+    <img src="/assets/img/Cacao(1)/6pHLab/20240713_095843_resultado.webp" />
 
-    <img src="/assets/img/Cacao(1)/6pHLab/20240626_111424_resultado.webp">
+    <img src="/assets/img/Cacao(1)/6pHLab/20240713_095904_resultado.webp" />
 
+    <img src="/assets/img/Cacao(1)/6pHLab/20240714_092459_resultado.webp" />
+  </section>
 
+  <!-- component -->
+  <hr
+    class="border-t my-4 border-gray-600 border-dashed overflow-visible relative before:content-[''] before:block before:border-8 before:border-gray-600 before:w-4 before:h-4 before:rounded-full before:absolute before:left-0 before:-top-2 after:content-[''] after:block after:border-8 after:border-gray-600 after:w-4 after:h-4 after:rounded-full after:absolute after:right-0 after:-top-2"
+  />
+  <!-- seccion 8 -->
 
-    <img src="/assets/img/Cacao(1)/6pHLab/20240713_095843_resultado.webp">
+  <section>
+    <img src="/assets/img/Cacao(1)/6pHLab/20240714_092459_resultado.webp" />
 
+    <img src="/assets/img/Cacao(1)/7pHLab2/20240623_165409_resultado.webp" />
 
+    <img src="/assets/img/Cacao(1)/7pHLab2/20240623_170545_resultado.webp" />
 
-    <img src="/assets/img/Cacao(1)/6pHLab/20240713_095904_resultado.webp">
+    <img src="/assets/img/Cacao(1)/7pHLab2/20240622_130602_resultado.webp" />
 
-
-    <img src="/assets/img/Cacao(1)/6pHLab/20240714_092459_resultado.webp">
-</section>
-
-
-
-<!-- component -->
-<hr class="border-t my-4 border-gray-600 border-dashed overflow-visible relative before:content-[''] before:block before:border-8 before:border-gray-600 before:w-4 before:h-4 before:rounded-full before:absolute before:left-0 before:-top-2 after:content-[''] after:block after:border-8 after:border-gray-600 after:w-4 after:h-4 after:rounded-full after:absolute after:right-0 after:-top-2" />
-<!-- seccion 8 -->
-
-
-<section>
-
-    <img src="/assets/img/Cacao(1)/6pHLab/20240714_092459_resultado.webp">
-
-    <img src="/assets/img/Cacao(1)/7pHLab2/20240623_165409_resultado.webp">
-
-    <img src="/assets/img/Cacao(1)/7pHLab2/20240623_170545_resultado.webp">
-
-    <img src="/assets/img/Cacao(1)/7pHLab2/20240622_130602_resultado.webp">
-
-    <img src="/assets/img/Cacao(1)/7pHLab2/20240622_130552_resultado.webp">
-
-</section>
+    <img src="/assets/img/Cacao(1)/7pHLab2/20240622_130552_resultado.webp" />
+  </section>
 </div>
 
 <!-- component -->
 
+<app-wasapp-button />
 
- <app-footer />
-
-
+<app-footer />
