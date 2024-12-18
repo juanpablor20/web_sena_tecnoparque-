@@ -47,7 +47,7 @@ export class FarmsService {
     },
     {
       id: 5,
-      name: 'Centro de Formación Agroindustrial La Angostura',
+      name: 'La Angostura',
       image: '/assets/img/cacao2.jpg',
       description: 'Tipo de Productor: cacaotero.',
       link: '/estate/3',
