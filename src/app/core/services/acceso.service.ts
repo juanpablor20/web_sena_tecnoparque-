@@ -7,24 +7,23 @@ import { Usuario } from '../interface/usuario';
 import { Login } from '../interface/Login';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccesoService {
-
   private http = inject(HttpClient);
-  private baseUrl:string = AppSettings.ApiUrl;
-  
-  
-  
-  constructor() { }
+  private baseUrl: string = AppSettings.ApiUrl;
 
+  constructor() {}
 
-  register(objeto:Usuario): Observable<ResponceAccess>{
-return     this.http.post<ResponceAccess>(`${this.baseUrl}Acceso/register`, objeto)
+  register(objeto: Usuario): Observable<ResponceAccess> {
+    return this.http.post<ResponceAccess>(
+      `${this.baseUrl}Acceso/register`,
+      objeto
+    );
   }
 
-  Login(objeto:Login): Observable<ResponceAccess>{
-    return this.http.post<ResponceAccess>(`${this.baseUrl}auth/login`, objeto)
+  Login(objeto: Login): Observable<ResponceAccess> {
+    return this.http.post<ResponceAccess>(`${this.baseUrl}auth/login`, objeto);
   }
 
   saveToken(token: string): void {
@@ -42,5 +41,4 @@ return     this.http.post<ResponceAccess>(`${this.baseUrl}Acceso/register`, obje
   logout(): void {
     localStorage.removeItem('accessToken');
   }
-   
 }

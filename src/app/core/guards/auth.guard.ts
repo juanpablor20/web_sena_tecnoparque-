@@ -2,7 +2,7 @@
 
 
 
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AccesoService } from '../services/acceso.service';
  // Servicio de autenticación

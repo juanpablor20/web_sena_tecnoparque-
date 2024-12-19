@@ -25,7 +25,7 @@ export const routes: Routes = [
  {path: 'contacts', component: ContactsComponent},
   {path: 'MetodologiaCafe', component: CoffeMetodologyComponent},
   {path: 'cacaoCartilla', component: CacaoCartillaComponent},
-  {path: 'cofeCartilla', component: CofeConponentComponent},
+  { path: 'cofeCartilla', component: CofeConponentComponent },
 
   {
     path:'dashboard', canActivate: [AuthGuard],
