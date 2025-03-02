@@ -3,12 +3,12 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
 import { SliderComponent } from '../../../shared/components/slider/slider.component';
 import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-cacao-metodology',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, SliderComponent, WasappButtonComponent, JsonPipe],
+  imports: [NavbarComponent, FooterComponent, SliderComponent, WasappButtonComponent, NgOptimizedImage, JsonPipe],
   templateUrl: './cacao-metodology.component.html',
   styleUrl: './cacao-metodology.component.css'
 })
@@ -16,8 +16,7 @@ export class CacaoMetodologyComponent {
 
 
   public mazorcaImages: string[] = [
-    '/assets/img/Cacao(1)/1poscosecha/2_resultado.webp',
-    '/assets/img/Cacao(1)/1poscosecha/1.webp',
+
     '/assets/img/Cacao(1)/1poscosecha/3.webp',
     '/assets/img/Cacao(1)/1poscosecha/4.webp',
     '/assets/img/Cacao(1)/1poscosecha/5.webp',

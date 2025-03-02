@@ -30,22 +30,30 @@
   </div>
 </div>
 
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center">
+  <!-- Contenedor principal centrado -->
+  <div class="max-w-5xl w-full">
+    <!-- Título -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
+        Procesos de Cosecha, Postcosecha y Beneficio
+      </h1>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        Explora las etapas del proceso del Cacao.
+      </p>
+    </div>
 
-
-<div class="container-banner">
-  <div class="banner">
-    <div class="slider" style="--quantity: {{ mazorcaImages.length }}">
-      @for (image of mazorcaImages; track image; let idx = $index) {
-      <div class="item" style="--position: {{ idx }}">
-        <img [src]="image" alt="" />
+    <!-- Contenedor de imágenes -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+      @for (image of mazorcaImages; track image;) {
+      <div class="aspect-w-1 aspect-h-1">
+        <img class="w-full h-full object-cover rounded-lg" [ngSrc]="image" alt="Cosecha de café" width="400" height="200" priority>
       </div>
-
       }
     </div>
-    
-
   </div>
 </div>
+
 
 
 
