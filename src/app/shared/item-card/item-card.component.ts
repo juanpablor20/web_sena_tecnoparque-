@@ -14,4 +14,6 @@ export class ItemCardComponent {
   @Input() image: string = '';
   @Input() description: string = '';
   @Input() link: string = '';
+
+  
 }

@@ -1,36 +1,29 @@
- <section class="bg-white dark:bg-gray-800">
-  <div
-    class="relative bg-gray-50 dark:bg-gray-800 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28"
-  >
-    <div>
-      <div class="h-1/3 bg-white dark:bg-gray-800 sm:h-2/3"></div>
-    </div>
+<!-- Sección principal -->
+<section class="bg-white dark:bg-gray-900">
+  <div class="relative bg-gray-50 dark:bg-gray-900 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
     <div class="relative mx-auto max-w-7xl">
+      <!-- Título y descripción -->
       <div class="text-center">
-        <h2
-          class="text-3xl font-bold tracking-tight text-gray-800 dark:text-white sm:text-4xl"
-        >
-          Información por finca.
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Información por finca
         </h2>
-        <p
-          class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 dark:text-gray-800 sm:mt-4"
-        >
+        <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-900 dark:text-white sm:mt-4">
           Sección dedicada a las fincas donde se realizaron pruebas con microorganismos, específicamente levaduras.
         </p>
       </div>
 
-
-     <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Grid de tarjetas -->
+      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12">
         <app-item-card
-          *ngFor="let item of items"
+          *ngFor="let item of items; let i = index"
           [name]="item.name"
           [image]="item.image"
           [description]="item.description"
           [link]="item.link"
-          [routerLink]="['/finca', item.id]">
+          [routerLink]="['/finca', item.id]"
         >
         </app-item-card>
       </div>
     </div>
   </div>
-</section>  
+</section>

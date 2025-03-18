@@ -19,4 +19,6 @@ import { ItemCardComponent } from '../item-card/item-card.component';
 })
 export class CtaSectionsComponent {
   @Input() items: any[] = [];
+
+  
 }
