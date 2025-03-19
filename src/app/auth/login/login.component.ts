@@ -23,33 +23,33 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
+  public errorMessage: string | null = null; // Variable para el mensaje de error
+
   iniciarSesion() {
-   if (this.formLogin.invalid)      return;
-   
+    if (this.formLogin.invalid) {
+      return;
+    }
+
     const object: Login = {
       correo: this.formLogin.value.correo,
       password: this.formLogin.value.password,
     };
-    
+
     this.accesoService.Login(object).subscribe({
       next: (data) => {
         if (data.accessToken) {
           this.accesoService.saveToken(data.accessToken);
           this.router.navigate(['dashboard']);
         } else {
-          alert('Usuario o contraseña incorrectos');
+          this.errorMessage = 'Usuario o contraseña incorrectos'; // Mensaje de error
         }
-
-        error: (error: any) => {
-          console.log(error.message);
-        };
+      },
+      error: (error) => {
+        this.errorMessage = 'Error al iniciar sesión. Inténtelo de nuevo.'; // Mensaje de error
+        console.error(error.message);
       },
     });
   }
-
-   
-     
-   
 
   register() {
     this.router.navigate(['register']);
