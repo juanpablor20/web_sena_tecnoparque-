@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { provideRouter, Routes, withInMemoryScrolling } from '@angular/router';
 
 import { ViewsEstateComponent } from './landing/pages/views-estate/views-estate.component';
 import { LoginComponent } from './auth/login/login.component';
