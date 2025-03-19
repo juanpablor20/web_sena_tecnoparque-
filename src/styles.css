@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+h1, h2 {
+    background: #282833;
+  background: linear-gradient(to right, #313ef8 0%, #e27f3e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
