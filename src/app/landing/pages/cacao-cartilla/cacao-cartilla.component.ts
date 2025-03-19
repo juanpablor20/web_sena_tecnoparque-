@@ -1,31 +1,20 @@
 import { Component, computed, signal } from '@angular/core';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
+import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
 
 @Component({
   selector: 'app-cacao-cartilla',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent],
+  imports: [NavbarComponent, FooterComponent, WasappButtonComponent],
   templateUrl: './cacao-cartilla.component.html',
   styleUrl: './cacao-cartilla.component.css'
 })
 export class CacaoCartillaComponent {
 
-    // const firsName = signal('juan');
-
-    // console.log(firsName());
-
-    // firstName.set('Jaime');
-
-
-    // firstName.update(name => name.toUpperCase());
+  
     
-      isTrial = signal(false);
-      isTrialExpired = signal(false);
-      showTrialDuration = computed(() => this.isTrial() && !this.isTrialExpired());
-      activateTrial() {
-        this.isTrial.set(true);
-      }
+      
     
   
   }

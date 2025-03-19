@@ -1,21 +1,43 @@
 <!-- Navbar -->
 <app-navbar />
-<div
-  class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8"
->
+
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
   <!-- Contenido de la vista de contacto -->
   <div class="max-w-7xl mx-auto mt-20">
     <!-- Título -->
     <div class="text-center">
-      <h1
-        class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl"
-      >
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
         Contáctanos
       </h1>
       <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
         ¿Tienes alguna pregunta o necesitas ayuda? Estamos aquí para ti.
       </p>
     </div>
+
+   
+<!-- Mensaje de éxito con botón de cierre -->
+<div
+  *ngIf="message"
+  class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
+>
+  <span class="block sm:inline">{{ message }}</span>
+  <span
+    class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer"
+    (click)="message = null"
+  >
+    <svg
+      class="fill-current h-6 w-6 text-green-500"
+      role="button"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+    >
+      <title>Cerrar</title>
+      <path
+        d="M14.348 5.652a.5.5 0 0 1 0 .707L10.707 10l3.641 3.641a.5.5 0 1 1-.707.707L10 10.707l-3.641 3.641a.5.5 0 1 1-.707-.707L9.293 10 5.652 6.359a.5.5 0 1 1 .707-.707L10 9.293l3.641-3.641a.5.5 0 0 1 .707 0z"
+      />
+    </svg>
+  </span>
+</div>
 
     <!-- Sección de información y formulario -->
     <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -75,67 +97,74 @@
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
           Envíanos un mensaje
         </h2>
-        <form class="mt-6 space-y-6">
+        <form [formGroup]="ContactForm" (ngSubmit)="submitForm()" class="mt-6 space-y-6">
+          <!-- Campo Nombre -->
           <div>
-            <label
-              for="name"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Nombre
             </label>
             <input
               type="text"
               id="name"
-              name="name"
+              formControlName="name"
               class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
               placeholder="Tu nombre"
-              required
             />
+            <!-- Mensaje de error para el nombre -->
+            <div *ngIf="ContactForm.get('name')?.invalid && (ContactForm.get('name')?.touched || submitted)" class="text-red-500 text-sm mt-1">
+              El nombre es requerido.
+            </div>
           </div>
+
+          <!-- Campo Correo electrónico -->
           <div>
-            <label
-              for="email"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Correo electrónico
             </label>
             <input
               type="email"
               id="email"
-              name="email"
+              formControlName="email"
               class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
               placeholder="tucorreo@example.com"
-              required
             />
+            <!-- Mensaje de error para el correo -->
+            <div *ngIf="ContactForm.get('email')?.invalid && (ContactForm.get('email')?.touched || submitted)" class="text-red-500 text-sm mt-1">
+              <span *ngIf="ContactForm.get('email')?.errors?.['required']">El correo es requerido.</span>
+              <span *ngIf="ContactForm.get('email')?.errors?.['email']">El correo no es válido.</span>
+            </div>
           </div>
+
+          <!-- Campo Mensaje -->
           <div>
-            <label
-              for="message"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Mensaje
             </label>
             <textarea
               id="message"
-              name="message"
+              formControlName="message"
               rows="4"
               class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
               placeholder="Escribe tu mensaje aquí..."
-              required
             ></textarea>
+            <!-- Mensaje de error para el mensaje -->
+            <div *ngIf="ContactForm.get('message')?.invalid && (ContactForm.get('message')?.touched || submitted)" class="text-red-500 text-sm mt-1">
+              El mensaje es requerido.
+            </div>
           </div>
+
+          <!-- Botón de enviar -->
           <div>
             <button
               type="submit"
-              class="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600"
+              [disabled]="ContactForm.invalid"
+              [ngClass]="{
+                'bg-blue-500 text-white hover:bg-blue-600': !ContactForm.invalid,
+                'bg-gray-400 text-gray-700 cursor-not-allowed': ContactForm.invalid
+              }"
+              class="px-4 py-2 rounded-md w-full transition"
             >
               Enviar mensaje
             </button>
           </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Footer -->
-<app-footer />
+       
