@@ -1,4 +1,4 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { animate, state, style, transition, trigger,  } from '@angular/animations';
 import { Component } from '@angular/core';
 

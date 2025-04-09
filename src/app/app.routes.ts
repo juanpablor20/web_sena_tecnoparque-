@@ -1,35 +1,75 @@
-import { provideRouter, Routes, withInMemoryScrolling } from '@angular/router';
+import { Routes } from '@angular/router';
 
-import { ViewsEstateComponent } from './landing/pages/views-estate/views-estate.component';
-import { LoginComponent } from './auth/login/login.component';
 import { LandingPageComponent } from './landing/landing-page.component';
-import { CacaoMetodologyComponent } from './landing/pages/cacao-metodology/cacao-metodology.component';
-import { CoffeMetodologyComponent } from './landing/pages/coffe-metodology/coffe-metodology.component';
-import { ContactsComponent } from './landing/pages/contacts/contacts.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { CacaoCartillaComponent } from './landing/pages/cacao-cartilla/cacao-cartilla.component';
-import { CofeConponentComponent } from './landing/pages/cofe-conponent/cofe-conponent.component';
-
+import { LayoutLandingComponent } from './shared/layout-landing/layout-landing.component';
 
 export const routes: Routes = [
-
-
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-
-  {path: 'home', component: LandingPageComponent},
-  { path: 'hola', component: ViewsEstateComponent },
-  { path: 'estate/:id', component: ViewsEstateComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'MetodologiaCacao', component: CacaoMetodologyComponent},
- {path: 'contacts', component: ContactsComponent},
-  {path: 'MetodologiaCafe', component: CoffeMetodologyComponent},
-  {path: 'cacaoCartilla', component: CacaoCartillaComponent},
-  { path: 'cofeCartilla', component: CofeConponentComponent },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  
   {
-    path:'dashboard', canActivate: [AuthGuard],
-    loadChildren:() => import('./dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES)
-},
-  {path: '**', component: PageNotFoundComponent}
+    path: 'home',
+    component: LayoutLandingComponent,
+
+    children: [
+      { path: '', component: LandingPageComponent },
+      {
+        path: 'cacaoCartilla',
+        loadComponent: () =>
+          import(
+            './landing/pages/cacao-cartilla/cacao-cartilla.component'
+          ).then((c) => c.CacaoCartillaComponent),
+      },
+      {
+        path: 'cofeCartilla',
+        loadComponent: () =>
+          import(
+            './landing/pages/cofe-conponent/cofe-conponent.component'
+          ).then((c) => c.CofeConponentComponent),
+      },
+      {
+        path: 'state/:id',
+        loadComponent: () =>
+          import('./landing/pages/views-estate/views-estate.component').then(
+            (c) => c.ViewsEstateComponent
+          ),
+      },
+     
+      {
+        path: 'MetodologiaCacao',
+        loadComponent: () =>
+          import(
+            './landing/pages/cacao-metodology/cacao-metodology.component'
+          ).then((c) => c.CacaoMetodologyComponent),
+      },
+      {
+        path: 'contacts',
+        loadComponent: () =>
+          import('./landing/pages/contacts/contacts.component').then(
+            (c) => c.ContactsComponent
+          ),
+      },
+      {
+        path: 'MetodologiaCafe',
+        loadComponent: () =>
+          import(
+            './landing/pages/coffe-metodology/coffe-metodology.component'
+          ).then((c) => c.CoffeMetodologyComponent),
+      },
+    ],
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./auth/login/login.component').then((c) => c.LoginComponent),
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTES),
+  },
+  { path: '**', component: PageNotFoundComponent },
+  
 ];
