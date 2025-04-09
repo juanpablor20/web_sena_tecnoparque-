@@ -8,6 +8,8 @@
       </h1>
       
     </div>
+  @defer(on viewport){
+
   
     <!-- Galería de imágenes -->
     <div class="max-w-7xl mx-auto">
@@ -23,6 +25,25 @@
         
       </div>
     </div>
+  } @placeholder {
+    <!-- Placeholder mientras carga -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+      @for (item of [1,2,3,4]; track $index) {
+        <div class="aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+      }
+    </div>
+  } @loading (minimum 1s) {
+    <!-- Estado de carga -->
+    <div class="text-center py-8">
+      <span class="loading loading-spinner loading-lg text-primary"></span>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">Cargando imágenes de cosecha...</p>
+    </div>
+  } @error {
+    <!-- Manejo de errores -->
+    <div class="alert alert-error mt-4">
+      <span>Error al cargar las imágenes de cosecha</span>
+    </div>
+  }
   
     <hr class="border-t my-8 border-gray-600 border-dashed overflow-visible relative before:content-[''] before:block before:border-8 before:border-gray-600 before:w-4 before:h-4 before:rounded-full before:absolute before:left-0 before:-top-2 after:content-[''] after:block after:border-8 after:border-gray-600 after:w-4 after:h-4 after:rounded-full after:absolute after:right-0 after:-top-2" />
   
@@ -32,15 +53,13 @@
     <h1 class="mx-auto text-4xl font-extrabold text-gray-900 dark:text-white mb-6">Secado</h1>
 
    </div>
-    <section >
-     
-      @for(image of ImageCoffe; track image){
-        <img [ngSrc]="image" alt="Secado de café"  width="400" height="200" loading="lazy">
-      }      
-     
-      
-       
-    </section>
+   
+    <app-image-gallery 
+    [images]="ImageCoffe" 
+    altText="secado de cafe"
+    [width]="400"
+    [height]="200">
+  </app-image-gallery>
   
    
     <!-- Sección de Preparación de la Muestra -->

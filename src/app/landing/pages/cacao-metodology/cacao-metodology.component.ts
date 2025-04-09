@@ -4,11 +4,12 @@ import { NavbarComponent } from '../../../shared/components/navbar/navbar.compon
 import { SliderComponent } from '../../../shared/components/slider/slider.component';
 import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
 import { JsonPipe, NgOptimizedImage } from '@angular/common';
+import { ImageGalleryComponent } from '../../../image-gallery/image-gallery.component';
 
 @Component({
   selector: 'app-cacao-metodology',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, SliderComponent, WasappButtonComponent, NgOptimizedImage, JsonPipe],
+  imports: [NavbarComponent, FooterComponent, SliderComponent, WasappButtonComponent, ImageGalleryComponent, JsonPipe],
   templateUrl: './cacao-metodology.component.html',
   styleUrl: './cacao-metodology.component.css'
 })

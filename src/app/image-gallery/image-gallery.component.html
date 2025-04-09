@@ -1,0 +1,30 @@
+
+@defer(on viewport){
+  <section [style.height.px]="sectionHeight" [style.gap.px]="gap">
+    @for(image of images; track image) {
+      <img [ngSrc]="image" 
+           alt="Imagen de galería" 
+           [width]="width" 
+           [height]="height" 
+           loading="lazy"
+           >
+    }
+  </section>
+
+} @placeholder {
+  <!-- Placeholder mientras carga -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+    cargando
+  </div>
+} @loading (minimum 1s) {
+  <!-- Estado de carga -->
+  <div class="text-center py-8">
+    <span class="loading loading-spinner loading-lg text-primary"></span>
+    <p class="mt-2 text-gray-600 dark:text-gray-400">Cargando imágenes de cosecha...</p>
+  </div>
+} @error {
+  <!-- Manejo de errores -->
+  <div class="alert alert-error mt-4">
+    <span>Error al cargar las imágenes de cosecha</span>
+  </div>
+}

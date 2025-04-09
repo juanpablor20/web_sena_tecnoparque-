@@ -4,15 +4,14 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
 import { OpenCloseComponent } from '../../../open-close/open-close.component';
 import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
 import { NgOptimizedImage } from '@angular/common';
+import { ImageGalleryComponent } from '../../../image-gallery/image-gallery.component';
 
 @Component({
   selector: 'app-coffe-metodology',
   standalone: true,
   imports: [
-    NavbarComponent,
-    FooterComponent,
-    OpenCloseComponent,
-    WasappButtonComponent,
+
+    ImageGalleryComponent,
     NgOptimizedImage
   ],
   templateUrl: './coffe-metodology.component.html',
