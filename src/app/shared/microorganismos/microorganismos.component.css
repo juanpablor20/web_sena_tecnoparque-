@@ -1,4 +1,6 @@
 
 
 
-  
+body {
+    overflow-x: hidden; /* Elimina scroll horizontal en toda la página */
+  }
