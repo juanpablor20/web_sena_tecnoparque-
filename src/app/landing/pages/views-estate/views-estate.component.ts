@@ -7,7 +7,7 @@ import { NavbarComponent } from '../../../shared/components/navbar/navbar.compon
 @Component({
   selector: 'app-views-estate',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, ],
+  imports: [CommonModule ],
   templateUrl: './views-estate.component.html',
   styleUrl: './views-estate.component.css',
 })

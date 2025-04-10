@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { SliderComponent } from '../../../shared/components/slider/slider.component';
+
 import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
 import { JsonPipe, NgOptimizedImage } from '@angular/common';
-import { ImageGalleryComponent } from '../../../image-gallery/image-gallery.component';
+import { ImageGalleryComponent } from '../../../shared/components/image-gallery/image-gallery.component';
 
 @Component({
   selector: 'app-cacao-metodology',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, SliderComponent, WasappButtonComponent, ImageGalleryComponent, JsonPipe],
+  imports: [ ImageGalleryComponent, JsonPipe],
   templateUrl: './cacao-metodology.component.html',
   styleUrl: './cacao-metodology.component.css'
 })

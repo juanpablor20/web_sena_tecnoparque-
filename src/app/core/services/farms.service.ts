@@ -10,11 +10,11 @@ export class FarmsService {
     {
       id: 1,
       name: 'Mirador Monte Café',
-      image: '/assets/img/images.jpg',
+      image: '/assets/img/Cafe(1)/3Beneficio/20240613_171332_resultado.webp',
       description: 'Ubicado en las montañas del Huila, este productor se especializa en café de alta calidad cultivado a más de 1,800 metros sobre el nivel del mar. Tipo de productor: Caficultor artesanal con prácticas sostenibles.',
       
       backGroundimage: '/assets/img/images.jpg',
-      imagen2: '/assets/img/cafe1.jpg',
+      imagen2: '/assets/img/Cafe(1)/3Beneficio/20240613_171332_resultado.webp',
       imagen3: '/assets/img/carousel-2.webp',
       altitude: '1,800 - 2,000 msnm',
       variety: 'Caturra, Castillo, Bourbon',
@@ -29,11 +29,11 @@ export class FarmsService {
     {
       id: 2,
       name: 'Finca El Alto',
-      image: '/assets/img/cafe1.jpg',
+      image: '/assets/img/Cafe(1)/3Beneficio/20240613_170559_resultado.webp',
       description: 'Enclavada en las colinas cafeteras de Colombia, esta finca produce un café de origen único con un proceso de fermentación controlada para realzar sus sabores afrutados.',
       
       backGroundimage: '/assets/img/cafe1.jpg',
-      imagen2: '/assets/img/cafe3.jpg',
+      imagen2: '/assets/img/Cafe(1)/3Beneficio/20240613_170559_resultado.webp',
       imagen3: '/assets/img/carousel-2.webp',
       altitude: '1,600 - 1,900 msnm',
       variety: 'Gesha, Tabi, Colombia',
@@ -51,7 +51,7 @@ export class FarmsService {
       image: '/assets/img/cafe3.jpg',
       description: 'Productor de café especial cultivado bajo sombra natural, lo que permite un crecimiento lento y una mayor concentración de sabores.',
       backGroundimage: '/assets/img/cafe3.jpg',
-      imagen2: '/assets/img/cafe1.jpg',
+      imagen2: '/assets/img/Cafe(1)/1Cosecha/20240612_091900_resultado.webp',
       imagen3: '/assets/img/carousel-2.webp',
       altitude: '1,500 - 1,750 msnm',
       variety: 'Bourbon, Castillo, Typica',
@@ -66,7 +66,7 @@ export class FarmsService {
     {
       id: 4,
       name: 'Cacao del Valle',
-      image: '/assets/img/cacao1.jpg',
+      image: '/assets/img/section-3-cacao.webp',
       description: 'Una finca familiar que produce cacao fino de aroma con fermentaciones controladas para obtener un chocolate con notas complejas y únicas.',
       backGroundimage: '/assets/img/cacao1.jpg',
       imagen2: '/assets/img/section-3-cacao.webp',

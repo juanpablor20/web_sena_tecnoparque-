@@ -1,11 +1,20 @@
-
-
-
-<section class="bg-center bg-no-repeat bg-[url('/assets/img/section-3-cacao.webp')] bg-gray-700 bg-blend-multiply" id="home" priority >
-    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Uso de microorganismos en el beneficio de café y cacao para el mejoramiento de la calidad en el norte del Huila.</h1>
-        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            
-        </div>
+<section class="relative" id="home" style="height: 100vh;"> <!-- Altura ajustable -->
+    <!-- Imagen optimizada -->
+    <img 
+      [ngSrc]="imageUrl"
+      alt="Fondo de café y cacao"
+      priority
+      fill
+      class="object-cover -z-10 brightness-50" 
+    >
+    
+    <!-- Overlay oscuro (opcional, para más control) -->
+    <div class="absolute inset-0 bg-gray-800 opacity-60 -z-10"></div>
+  
+    <!-- Contenido -->
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 relative z-10">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+        Uso de microorganismos en el beneficio de café y cacao para el mejoramiento de la calidad en el norte del Huila.
+      </h1>
     </div>
-</section>
+  </section>

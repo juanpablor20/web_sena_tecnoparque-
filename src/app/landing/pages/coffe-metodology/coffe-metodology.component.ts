@@ -1,19 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { FooterComponent } from '../../../shared/components/footer/footer.component';
-import { OpenCloseComponent } from '../../../open-close/open-close.component';
-import { WasappButtonComponent } from '../../../shared/components/wasapp-button/wasapp-button.component';
 import { NgOptimizedImage } from '@angular/common';
-import { ImageGalleryComponent } from '../../../image-gallery/image-gallery.component';
+import { ImageGalleryComponent } from '../../../shared/components/image-gallery/image-gallery.component';
 
 @Component({
   selector: 'app-coffe-metodology',
   standalone: true,
-  imports: [
-
-    ImageGalleryComponent,
-    NgOptimizedImage
-  ],
+  imports: [ImageGalleryComponent, NgOptimizedImage],
   templateUrl: './coffe-metodology.component.html',
   styleUrl: './coffe-metodology.component.css',
 })
@@ -32,12 +24,11 @@ export class CoffeMetodologyComponent {
     '/assets/img/Cafe(1)/3Beneficio/20240613_170801_resultado.webp',
     '/assets/img/Cafe(1)/3Beneficio/20240613_171332_resultado.webp',
   ];
-  
-  public ImageCoffe: string[] = [
 
+  public ImageCoffe: string[] = [
     '/assets/img/Cafe(1)/7Secado/20240624_102509_resultado.webp',
     '/assets/img/Cafe(1)/7Secado/20240617_173319_resultado.webp',
     '/assets/img/Cafe(1)/7Secado/20240625_095225_resultado.webp',
-    '/assets/img/Cafe(1)/7Secado/20240901_113925.webp'
+    '/assets/img/Cafe(1)/7Secado/20240901_113925.webp',
   ];
 }
