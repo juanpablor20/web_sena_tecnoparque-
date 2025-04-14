@@ -1,23 +1,24 @@
-<!-- Banner Principal - Estilizado y Responsivo -->
 <section class="relative py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500 overflow-hidden">
-
   <div class="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
     <div class="flex flex-col md:flex-row items-center justify-between">
       
       <!-- Contenido principal -->
       <div class="w-full md:w-1/2 text-center md:text-left">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-white dark:text-white drop-shadow-lg">
+        <!-- Título principal - Negro en modo claro, blanco en oscuro -->
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-white drop-shadow-lg">
           {{ finca.name }}
         </h1>
         
-        <p class="text-lg md:text-xl text-gray-200 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
+        <!-- Descripción - Gris oscuro en modo claro, gris claro en oscuro -->
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
           {{ finca.description }}
         </p>
 
-        <div class="space-y-3 text-gray-100 dark:text-gray-300 text-left max-w-xl mx-auto md:mx-0">
-          <p><span class="font-semibold text-white dark:text-white">🌄 Altitud:</span> {{ finca.altitude }}</p>
-          <p><span class="font-semibold text-white dark:text-white">🌱 Variedad:</span> {{ finca.variety }}</p>
-          <p><span class="font-semibold text-white dark:text-white">☕ Perfil de Sabor:</span> {{ finca.flavorProfile }}</p>
+        <!-- Detalles - Texto más oscuro en modo claro -->
+        <div class="space-y-3 text-gray-800 dark:text-gray-300 text-left max-w-xl mx-auto md:mx-0">
+          <p><span class="font-semibold text-gray-900 dark:text-white">🌄 Altitud:</span> {{ finca.altitude }}</p>
+          <p><span class="font-semibold text-gray-900 dark:text-white">🌱 Variedad:</span> {{ finca.variety }}</p>
+          <p><span class="font-semibold text-gray-900 dark:text-white">☕ Perfil de Sabor:</span> {{ finca.flavorProfile }}</p>
         </div>
       </div>
 
